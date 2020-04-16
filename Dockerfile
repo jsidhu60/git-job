@@ -1,2 +1,7 @@
-FROM jsidhu60/new_dockerfile
-ADD . /var/www/html
+FROM centos
+
+RUN yum -y install httpd
+
+COPY index.html /var/www/html/
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+EXPOSE 80
